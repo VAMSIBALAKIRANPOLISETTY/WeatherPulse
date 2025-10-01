@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dynamic Weather Dashboard — Vamsi</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <div class="brand">
+        <h1>WeatherPulse</h1>
+        <p>Real-time, location-based weather insights</p>
+      </div>
+
+      <div class="controls">
+        <div class="search">
+          <input id="cityInput" type="text" placeholder="Search city (e.g., Mumbai)" />
+          <button id="searchBtn" title="Search">🔍</button>
+        </div>
+        <div class="actions">
+          <button id="geoBtn" title="Use my location">📍 Use my location</button>
+          <button id="saveBtn" title="Save current city">★ Save</button>
+          <button id="themeBtn" title="Toggle Theme">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-sun">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-moon">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <section id="status" class="status"></section>
+
+    <section class="content-area">
+      <div class="main-content">
+        <div id="currentCard" class="card current-card hidden">
+          <div class="top">
+            <div>
+              <h2 id="cityName">City</h2>
+              <p id="desc">Clear</p>
+            </div>
+            <div class="icon-wrap">
+              <img id="weatherIcon" src="" alt="weather" />
+            </div>
+          </div>
+
+          <div class="metrics">
+            <div class="metric">
+              <span id="temp">--°C</span>
+              <small>Temperature</small>
+            </div>
+            <div class="metric">
+              <span id="feels">--°C</span>
+              <small>Feels like</small>
+            </div>
+            <div class="metric">
+              <span id="humidity">--%</span>
+              <small>Humidity</small>
+            </div>
+            <div class="metric">
+              <span id="wind">-- m/s</span>
+              <small>Wind</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="card chart-card hidden" id="chartCard">
+          <h3>Temperature Trend (Next 5 days)</h3>
+          <div class="chart-container">
+            <canvas id="tempChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <aside class="sidebar">
+        <div class="card forecast-card hidden" id="forecastCard">
+          <h3>5-Day Forecast</h3>
+          <div id="forecastList" class="forecast-list"></div>
+        </div>
+        <div class="card favorites-card">
+          <h3>Saved Cities</h3>
+          <div id="favoritesList" class="favorites-list"></div>
+        </div>
+         <div class="card notes">
+          <h3>Notes</h3>
+          <ul>
+            <li>Tech: HTML, CSS, JavaScript (OpenWeatherMap API, Geolocation API)</li>
+            <li>Features: current weather, 5-day forecast, chart, favorites, theme toggle</li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+    <footer class="footer">
+      <small>WeatherPulse •By Vamsi</small>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
